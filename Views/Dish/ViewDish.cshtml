@@ -1,0 +1,37 @@
+
+@model Dish
+
+
+@{
+    ViewData["Title"] = "View Dish";
+}
+
+<h2>@Model.Name</h2> 
+
+<dl>
+    <dt>Chef's Name:</dt>
+    <dd>@Model.ChefName</dd>
+
+    <dt>Name of Dish:</dt>
+    <dd>@Model.Name</dd>
+
+    <dt>Calories:</dt>
+    <dd>@Model.Calories</dd>
+
+    <dt>Tastiness:</dt>
+    <dd>@Model.Tastiness</dd>
+
+    <dt>Description:</dt>
+    <dd>@Model.Description</dd>
+</dl>
+
+
+<form asp-action="DeleteDish" asp-controller="Dish" asp-route-id="@Model.DishID" method="post" class="d-inline">
+    <button type="submit" class="btn btn-danger" onclick="()">Delete</button>
+</form>
+
+
+<form asp-action="EditDish" asp-controller="Dish" asp-route-id="@Model.DishID" method="post" class="d-inline">
+    <button type="submit" class="btn btn-warning">Edit</button>
+</form>
+

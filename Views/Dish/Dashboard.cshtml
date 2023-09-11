@@ -1,0 +1,45 @@
+@* *** #14 set up page****** *@
+@model List<Dish>
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to CRUDelicious</h1>
+        <p>
+            <a asp-controller="Dish" asp-action="Dashboard">Home</a>
+            |
+            <a asp-controller="Dish" asp-action="NewDish">Add a Dish</a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Check out some recent dishes</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <th>Tastiness</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Dish dish in Model)
+                {
+                    <tr>
+                        <td><a asp-action="ViewDish" asp-controller="Dish" asp-route-id="@dish.DishID">@dish.Name</a></td>
+                        <td>@dish.Calories</td>
+                        <td>@dish.Tastiness</td>
+                        <td>@dish.CreatedAt.ToString("MM/dd/yyyy HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
